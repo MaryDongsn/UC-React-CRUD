@@ -24,7 +24,6 @@ class ListAllCPUs extends Component {
         }
     }
 
-
     componentDidMount() {
         this.fetchData().then();
     }

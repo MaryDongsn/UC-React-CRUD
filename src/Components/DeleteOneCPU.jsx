@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class UpdateOneCpu extends Component {
+class DeleteOneCpu extends Component {
 
     constructor(props) {
         super(props);
@@ -24,7 +24,7 @@ class UpdateOneCpu extends Component {
         console.log(this.state);
         event.preventDefault();
         fetch("http://localhost:8080/v1/cpus/" + this.state.id, {
-            method: "POST",
+            method: "DELETE",
             body: JSON.stringify(this.state),
             headers: {
                 "Content-Type": "application/json"
@@ -41,12 +41,12 @@ class UpdateOneCpu extends Component {
         })
     }
 
-    render() {
+    render(){
         console.log('render', this.state)
 
         return (
             <div className="container">
-                <h1>Update a CPU object:</h1>
+                <h1>Delete a CPU object:</h1>
 
                 <form onSubmit={this.handleFormSubmit}>
                     <div className={"form-group"}>
@@ -83,4 +83,4 @@ class UpdateOneCpu extends Component {
 }
 
 
-export default UpdateOneCpu;
+export default DeleteOneCpu;
