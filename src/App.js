@@ -3,7 +3,10 @@ import Counter from "./Components/Counter";
 import List from "./Components/List";
 import CountDown from "./Components/CountDown";
 import ListAllCPUs from "./Components/ListAllCPUs";
-import CreatNewCPU from "./Components/CreatNewCPU";
+import UpdateOneCpu from "./Components/UpdateOneCPU";
+import CreatNewCpu from "./Components/CreatNewCPU";
+import Creat from "./Components/Creat";
+
 
 
 
@@ -15,7 +18,7 @@ class App extends Component {
 
             <div>
 
-                <CreatNewCPU/>
+                <CreatNewCpu/>
             </div>
 
             )

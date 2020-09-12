@@ -9,7 +9,6 @@ class CreatNewCpu extends Component {
         }
     }
 
-
     componentDidMount() {
         fetch("http://localhost:8080/v1/cpus", {
             method: "GET",
@@ -41,35 +40,34 @@ class CreatNewCpu extends Component {
     }
 
     render() {
+        console.log('render', this.state)
+
         return (
             <div className="container">
-                <div id="CPU_Created">
-                    <form className="form">
-                        <p>
-                            Create a new CPU object:
-                        </p>
+                <h1>Create a new CPU object:</h1>
 
-                        <div className={"form-group"}>
-                            <label htmlFor="CPUStatus">CPU Status</label>
-                            <input type="text" placeholder="Enter CPU Status" name="CPUStatus" id='CPUStatus'
-                                   value={this.state.status}
-                                   onChange={this.handleInputChange}/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="CPULabel">CPU Label</label>
-                            <input type="text" id='CPULabel' name="CPULabel" placeholder="Enter CPU Label"
-                                   value={this.state.label}
-                                   onChange={this.handleInputChange}/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="CPUDescription">CPU Description</label>
-                            <input type="text" id='CPUDescription' name="CPUDescription"
-                                   placeholder="Enter CPU Description" value={this.state.description}
-                                   onChange={this.handleInputChange}/>
-                        </div>
-                        <button className="btn btn-primary" onClick={this.handleFormSubmit}>Submit</button>
-                    </form>
-                </div>
+                <form onSubmit={this.handleFormSubmit}>
+                    <div className={"form-group"}>
+                        <label className="CPUStatus">CPU Status</label>
+                        <input type="text" placeholder="Enter CPU Status" name="status" id='CPUStatus'
+                               value={this.state.status}
+                               onInput={this.handleInputChange}/>
+                    </div>
+                    <div className={"form-group"}>
+                        <label className="CPULabel">CPU Label</label>
+                        <input type="text" id='CPULabel' name="label" placeholder="Enter CPU Label"
+                               value={this.state.label}
+                               onInput={this.handleInputChange}/>
+                    </div>
+                    <div className={"form-group"}>
+                        <label className="CPUDescription">CPU Description</label>
+                        <input type="text" id='CPUDescription' name="description"
+                               placeholder="Enter CPU Description" value={this.state.description}
+                               onInput={this.handleInputChange}/>
+                    </div>
+                    <button onSubmit={this.handleFormSubmit} className="btn btn-primary">Submit</button>
+                </form>
+
             </div>
         );
     }
