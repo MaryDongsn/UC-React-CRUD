@@ -12,28 +12,28 @@ class ListAllCPUs extends Component {
         try {
             let response = await fetch("http://localhost:8080/v1/cpus");
             let jsonResponse = await response.json();
-            //console.log(jsonResponse);
-            console.log(response.result);
-            this.setState({
-                data: jsonResponse.result
-            });
-            console.log(this.state.data);
-            console.log(jsonResponse ? jsonResponse.length : 'json_data is null or undefined');
+            return jsonResponse;
         } catch (e) {
             console.log(e);
         }
     }
 
-    componentDidMount() {
-        this.fetchData().then();
+    async componentDidMount() {
+        let resultData = await this.fetchData()
+        this.setState({
+            data: resultData.result
+        });
+        console.log(this.state.data);
     }
 
     renderRows() {
-        return (this.state.data.map(todo => {
-                    return (<tr>
-                        <td>{todo.id}</td>
-                        <td>{todo.status}</td>
-                        <td>{todo.label}</td>
+        return (this.state.data.map(item => {
+                    return (<tr key={item.id}>
+                        <td>{item.id}</td>
+                        <td>{item.status}</td>
+                        <td>{item.label}</td>
+                        <td>{item.price}</td>
+                        <td>{item.description}</td>
                     </tr>);
                 }
             )
@@ -41,7 +41,6 @@ class ListAllCPUs extends Component {
     }
 
     render() {
-
         return (
             <table className="table" cellSpacing="20" id="example">
                 <thead>
@@ -49,9 +48,11 @@ class ListAllCPUs extends Component {
                     <th className="">Id</th>
                     <th className="">Status</th>
                     <th className="">Label</th>
+                    <th className="">Price</th>
+                    <th className="">Description</th>
                 </tr>
                 </thead>
-                <tbody id="example-body">
+                <tbody>
                 {this.state.data.length && this.renderRows()}
                 </tbody>
             </table>
